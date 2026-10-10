@@ -1,0 +1,16 @@
+[Unit]
+Description=Docker VPS Maker Discord Bot
+After=docker.service network-online.target
+Requires=docker.service
+
+[Service]
+Type=simple
+WorkingDirectory=/opt/docker-vps-maker-bot
+ExecStart=/usr/bin/python3 /opt/docker-vps-maker-bot/bot.py
+Restart=always
+RestartSec=5
+EnvironmentFile=/opt/docker-vps-maker-bot/.env
+User=root
+
+[Install]
+WantedBy=multi-user.target
